@@ -1,0 +1,6 @@
+{
+  "exec": "node -r dotenv/config ./server.js",
+  "ignore": [".vscode", ".git", "build", "node_modules"],
+  "restartable": "rs",
+  "verbose": true
+}

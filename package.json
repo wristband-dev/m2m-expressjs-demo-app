@@ -1,0 +1,42 @@
+{
+  "name": "m2m-client-expressjs-demo-app",
+  "description": "This is a server-only demo powered by Wristband to show how to protect APIs with machine-to-machine OAuth clients. This is simulating a microservice scenario.",
+  "author": "Wristband",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.12.1",
+    "npm": ">=8.19.2"
+  },
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node -r dotenv/config server.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "agentkeepalive": "^4.5.0",
+    "async": "^3.2.4",
+    "axios": "^1.5.1",
+    "express": "^4.18.2",
+    "express-jwt": "^8.4.1",
+    "express-validator": "^6.6.0",
+    "jwks-rsa": "^3.1.0",
+    "moment": "^2.29.4",
+    "node-cache": "^5.1.2",
+    "stoppable": "^1.1.0"
+  }
+}
