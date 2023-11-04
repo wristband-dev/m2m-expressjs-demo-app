@@ -1,7 +1,36 @@
 # Wristband Machine-to-machine OAuth Client Demo Server (ExpressJS)
 
-This is a NodeJS Server using ExpressJS to demonstrate how to protect APIs with access tokens in Wristband.  It consists of two REST APIs: one that can be called without the need for an access token, and another that always requires a valid access token in the request headers. The purpose of this server is to demonstrate how to acquire an access token on server startup for a machine-to-machine (M2M) OAuth client, how to protect an API with access tokens, and refresh the access tokens for the M2M OAuth2 client.
+This is a NodeJS Server using ExpressJS to demonstrate how to acquire an access token on server startup for a machine-to-machine (M2M) OAuth client, how to protect an API with access tokens, and how to refresh the access tokens for the M2M OAuth2 client.
+
 <br/>
+<br>
+<hr />
+
+## Demo App Overview
+
+Below is a quick overview of this M2M Client demo server and how it interacts with Wristband.
+
+### Entity Model
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-entity-model-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-entity-model-light.png">
+  <img alt="entity model" src="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-entity-model-light.png">
+</picture>
+
+The entity model starts at the top with an application.  The application has one M2M OAuth2 client through which the server will be authenticated.  In this case, the client is a NodeJS server with Express.
+
+### Architecture
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-architecture-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/b2b-expressjs-demo-app-architecture-light.png">
+  <img alt="entity model" src="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/b2b-expressjs-demo-app-architecture-light.png">
+</picture>
+
+The demo server consists of two REST APIs: one that can be called without the need for an access token, and another that always requires a valid access token in the request headers.
 
 ## Create Your OAuth Client in Wristband
 
@@ -31,8 +60,8 @@ This is the endpoint you can hit from any command line or API testing tool (cURL
 
 `GET http://localhost:6001/api/protected/data`
 
-This endpoint is the downstream API called by the public data API, and it cannot be called without a valid access token.  When this API is invoked, amiddleware is used to validate the following:
-- The access token is present in the Authorization header (format = `Authorization: Bearer <access_token>`)
+This endpoint is the downstream API called by the public data API, and it cannot be called without a valid access token.  When this API is invoked, a middleware is used to validate the following:
+- The access token is present in the Authorization header (format = `Authorization: Bearer <access_token>`).
 - The signature is valid when using the public keys as obtained from the Wristband JWKS endpoint.
 - The access token is not expired.
 
