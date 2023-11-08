@@ -26,8 +26,8 @@ The entity model starts at the top with an application.  The application has one
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-architecture-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/b2b-expressjs-demo-app-architecture-light.png">
-  <img alt="entity model" src="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/b2b-expressjs-demo-app-architecture-light.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-architecture-light.png">
+  <img alt="entity model" src="https://assets.wristband.dev/docs/m2m-client-expressjs-demo-app/m2m-client-expressjs-demo-app-architecture-light.png">
 </picture>
 
 The demo server consists of two REST APIs: one that can be called without the need for an access token, and another that always requires a valid access token in the request headers.
