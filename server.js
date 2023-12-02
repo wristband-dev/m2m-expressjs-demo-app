@@ -1,20 +1,16 @@
 'use strict';
 
-const retry = require('async/retry');
+
 const http = require('http');
-const moment = require('moment');
+
 const stoppable = require('stoppable');
 
 const app = require('./app');
-const {
-  ACCESS_TOKEN_EXPIRATION_KEY,
-  ACCESS_TOKEN_KEY,
-  CLIENT_CREDENTIALS_GRANT_TYPE,
-  IS_ACCESS_TOKEN_REFRESHING_KEY,
-} = require('./utils/constants');
-const localCache = require('./cache/local-cache');
-const wristbandApiClient = require('./axios/wristband-api-client');
-const { getAccessTokenExpirationFromSeconds, onError, shutdown } = require('./utils/util');
+
+const {onError, shutdown} = require('./utils/util');
+
+const wristbandM2MClient = require('./include-m2m-sdk')
+const retry = require('async-retry');
 
 app.set('port', 6001);
 
@@ -33,35 +29,15 @@ process.on('SIGTERM', () => {
   shutdown(server);
 });
 
-const getAccessToken = async () => {
-  console.info('(SERVER STARTUP) Attempting to get access token...');
-  const response = await wristbandApiClient.post('/v1/oauth2/token', CLIENT_CREDENTIALS_GRANT_TYPE);
-  return response;
-};
-
-const setTokensIntoCache = (err, response) => {
-  if (err) {
-    return console.error('(SERVER STARTUP) Failed to get token credentials due to:', err);
-  }
-
-  localCache.set(ACCESS_TOKEN_KEY, response.data.access_token);
-  localCache.set(IS_ACCESS_TOKEN_REFRESHING_KEY, false);
-
-  const expirationTime = getAccessTokenExpirationFromSeconds(response.data.expires_in);
-  localCache.set(ACCESS_TOKEN_EXPIRATION_KEY, expirationTime);
-  return console.info(`(SERVER STARTUP) Access token acquired. Expires at ${moment(expirationTime)}`);
-};
-
-// Use client credentials grant type to get access token on startup and
-// store it in local cache. Retries every 15 seconds for up to 48 hours.
+// Optimization : Pre-fetch M2M token to store it in cache
 retry(
-  {
-    times: 172800,
-    interval: 15000,
-  },
-  getAccessToken,
-  (err, response) => setTokensIntoCache(err, response),
-);
+    async () => {
+      await wristbandM2MClient.getToken();
+    },
+    {
+      retries: 172800,
+      minTimeout: 15000
+    });
 
 // Start the server.
 server.listen(6001);
