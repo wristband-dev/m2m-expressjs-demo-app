@@ -1,4 +1,27 @@
-# Wristband Machine-to-machine OAuth Client Demo Server (ExpressJS)
+<div align="center">
+  <a href="https://wristband.dev">
+    <picture>
+      <img src="https://assets.wristband.dev/images/email_branding_logo_v1.png" alt="Github" width="297" height="64">
+    </picture>
+  </a>
+  <p align="center">
+    Enterprise-ready auth that is secure by default, truly multi-tenant, and ungated for small businesses.
+  </p>
+  <p align="center">
+    <b>
+      <a href="https://wristband.dev">Website</a> • 
+      <a href="https://docs.wristband.dev/">Documentation</a>
+    </b>
+  </p>
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+# Wristband Machine-to-Machine OAuth Client Demo Server (ExpressJS)
 
 This is a NodeJS Server using ExpressJS to demonstrate how to acquire an access token on server startup for a machine-to-machine (M2M) OAuth client, how to protect an API with access tokens, and how to refresh the access tokens for the M2M OAuth2 client.
 
@@ -34,7 +57,7 @@ The demo server consists of two REST APIs: one that can be called without the ne
 
 ## Create Your OAuth Client in Wristband
 
-In your Wristband account, create a new application. You can put any value desired for the `loginUrl` since it is arbitrary in the absence of any user-facing interaction. Next, register a M2M Oauth2 Client for that application.  Copy off the client ID and secret as well as the application vanity domain.  You will need those values to configure environment variables for this server.
+In your Wristband account, create a new application. You can put any value desired for the application's `loginUrl` since it is arbitrary in the absence of any user-facing interaction. Next, register a M2M Oauth2 Client for that application.  Copy off the `clientId` and `clientSecret` as well as the application's vanity domain.  You will need those values to configure environment variables for this server.
 
 ## Setup and Start the Server
 
