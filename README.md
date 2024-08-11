@@ -91,3 +91,14 @@ This endpoint is the downstream API called by the public data API, and it cannot
 ## Getting New Access Tokens
 
 There is an Axios request interceptor attached to the Protected API Client that is used for making requests to the protected data API from the public data API controller.  With each request made, that interceptor checks that an access token exists in the local memory cache and is also not expired.  If both conditions are met, it will stick the access token in the Authorization header automatically.  Otherwise, it won't proceed with the original downstream request until an attempt to get a new access token is complete.  Wristband's `/token` endpoint gets called with the Client Credentials grant type to get a new token, and the new token will be saved to local memory cache along with the new expiration time.
+
+## Wristband Node M2M SDK
+This demo app is leveraging the [Wristband node-m2m-auth SDK](https://github.com/wristband-dev/node-m2m-auth) for all authentication interaction in the NodeJS server. Refer to that GitHub repository for more information.
+
+## Questions
+
+Reach out to the Wristband team at <support@wristband.dev> for any questions regarding this demo app.
+
+<br/>
+
+
