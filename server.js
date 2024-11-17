@@ -1,16 +1,12 @@
 'use strict';
 
-
 const http = require('http');
-
 const stoppable = require('stoppable');
+const retry = require('async-retry');
 
 const app = require('./app');
-
-const {onError, shutdown} = require('./utils/util');
-
-const wristbandM2MClient = require('./include-m2m-sdk')
-const retry = require('async-retry');
+const { onError, shutdown } = require('./utils/util');
+const wristbandM2MClient = require('./include-m2m-sdk');
 
 app.set('port', 6001);
 
@@ -31,13 +27,17 @@ process.on('SIGTERM', () => {
 
 // Optimization : Pre-fetch M2M token to store it in cache
 retry(
-    async () => {
-      await wristbandM2MClient.getToken();
-    },
-    {
-      retries: 172800,
-      minTimeout: 15000
-    });
+  async () => {
+    const token = await wristbandM2MClient.getToken();
+    if (token) {
+      console.log(`Access token acquired at: ${new Date()}`);
+    }
+  },
+  {
+    retries: 172800,
+    minTimeout: 15000,
+  },
+);
 
 // Start the server.
 server.listen(6001);
