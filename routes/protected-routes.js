@@ -18,7 +18,7 @@ router.use(
       jwksUri: `${WRISTBAND_API_URL}/v1/oauth2/jwks`,
     }),
     // Validate the issuer
-    issuer: `https://${process.env.APPLICATION_DOMAIN}`,
+    issuer: `https://${process.env.APPLICATION_VANITY_DOMAIN}`,
     algorithms: ['RS256'],
   }),
 );
