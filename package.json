@@ -1,5 +1,5 @@
 {
-  "name": "m2m-client-expressjs-demo-app",
+  "name": "m2m-expressjs-demo-app",
   "description": "This is a server-only demo powered by Wristband to show how to protect APIs with machine-to-machine OAuth clients. This is simulating a microservice scenario.",
   "author": "Wristband",
   "version": "0.1.0",

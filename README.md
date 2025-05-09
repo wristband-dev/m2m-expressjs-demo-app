@@ -21,7 +21,7 @@
 
 <br/>
 
-# Wristband Machine-to-Machine OAuth Client Demo Server (ExpressJS)
+# Wristband Machine-to-Machine OAuth Client Demo Server (NodeJS)
 
 This is a NodeJS Server using ExpressJS to demonstrate how to acquire an access token on server startup for a machine-to-machine (M2M) OAuth client, how to protect an API with access tokens, and how to refresh the access tokens for the M2M OAuth2 client.
 
