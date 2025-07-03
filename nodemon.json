@@ -1,6 +1,8 @@
 {
-  "exec": "node -r dotenv/config ./server.js",
-  "ignore": [".vscode", ".git", "build", "node_modules"],
+  "watch": ["src"],
+  "ext": "ts,json",
+  "exec": "ts-node -r dotenv/config ./src/server.ts",
+  "ignore": [".vscode", ".git", "build", "dist", "node_modules"],
   "restartable": "rs",
   "verbose": true
 }
