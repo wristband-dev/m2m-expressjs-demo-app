@@ -61,7 +61,7 @@ In your Wristband account, create a new application. You can put any value desir
 
 ## Setup and Start the Server
 
-From the root of this project, paste the values for application vanity domain, client ID, and client secret into the `.env` file.  Next, install all server dependencies required by the server by running the command `npm install`. Finally, either the `npm run dev` command or the `npm start` command to start the server.  The server will start on port 6001.
+From the root of this project, paste the values for application vanity domain, client ID, and client secret into the `.env` file.  Next, install all server dependencies required by the server by running the command `npm install`. Finally, run the `npm run dev` command start the server.  The server will start on port 6001.
 
 ## Acquiring an Access Token for the Server
 
@@ -77,7 +77,7 @@ You will interact with the server by calling the public data API.
 
 This is the endpoint you can hit from any command line or API testing tool (cURL, Postman, etc.) without passing any access token.  When a request is sent to this API, the API will turn around and make an API call to the protected data API with the access token that was acquired during server startup.  This is to simulate something akin to a microservices environment where an upstream service would be responsible for sending an acess token with every downstream request. The expected response output of this API is:
 
-`{ publicData: "hello world", protectedData: "here I am" }`
+`{ publicData: "hello world", protectedData: "Here I am!!" }`
 
 ### Protected Data API
 
