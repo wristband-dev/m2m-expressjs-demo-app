@@ -1,2 +1,2 @@
-export { default as errorHandler } from './error-handler';
+export { default as errorMiddleware } from './error-middleware';
 export { default as jwtAuthMiddleware } from './jwt-auth-middleware';
